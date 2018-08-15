@@ -1,0 +1,13 @@
+{
+  "name": "apollo2-test",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-lambda": "^2.0.2",
+    "graphql": "^0.13.2"
+  },
+  "devDependencies": {
+    "serverless-offline": "^3.25.7"
+  }
+}

@@ -1,0 +1,33 @@
+# serverless.yml
+
+service: apollo2-test
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-west-2
+  iamRoleStatements:
+        - Effect: "Allow"
+          Action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - ec2:CreateNetworkInterface
+          - ec2:DescribeNetworkInterfaces
+          - ec2:DeleteNetworkInterface
+          Resource: "*"  
+functions:
+  graphql:
+    # this is formatted as <FILENAME>.<HANDLER>
+    handler: handler.graphql
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true        
+             
+plugins:
+  - serverless-offline
